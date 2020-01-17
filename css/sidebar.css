@@ -1,0 +1,29 @@
+.sidebar {
+	width: 1000px;
+	margin: 0 auto;
+}
+.sidebar h2 {
+	margin: 0;
+	padding: 25px 0;
+	font-size: 22px;
+	border-bottom: 1px solid #e0e0e3;
+	color: #4a536e;
+}
+.sidebar > p, .sidebar > div {
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+	margin: 25px 0;
+	padding: 25px;
+	background-color: #fff;
+}
+.sidebar > p table td, .sidebar > div table td {
+	padding: 5px;
+}
+.sidebar > p table td:first-child, .sidebar > div table td:first-child {
+	font-weight: bold;
+	color: #4a536e;
+	padding-right: 15px;
+}
+.sidebar > div p {
+	padding: 5px;
+	margin: 0 0 10px 0;
+}
