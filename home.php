@@ -19,6 +19,7 @@ if (!isset($_SESSION['loggedin'])) {
             <h1>Narcotic Roleplay UCP</h1>
             <a href="home.php"><i class="fas fa-home"></i>Home</a>
             <a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
+            <a href="stats.php"><i class="fas fa-address-card"></i>Ingame Stats</a>
             <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
         </div>
     </nav>
@@ -36,7 +37,10 @@ if (!isset($_SESSION['loggedin'])) {
         <p>Welcome back, <?=$_SESSION['name']?>!</p>
         <br>
         <p>Changelog:<br><br>
-        - UCP has been updated to version 1.0!<br>
+        - UCP has been updated to version 1.1!<br>
+        - Ingame stats [W.I.P]<br>
+        - Fixed the log search function bugging out.
+        <br>
         </p>
     </div>
 </body>
