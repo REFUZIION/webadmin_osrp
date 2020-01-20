@@ -2,7 +2,7 @@
 Work in progress User Control Panel for administrators on San Andreas Multiplayer
 
 # Changelog
-Update 1.1
+*Update 1.1*
   - Added Player stat system (Still work in progress)
 
 # TO DO:
