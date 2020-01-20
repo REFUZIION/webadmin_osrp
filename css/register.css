@@ -5,8 +5,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-body {
-    background-color: #435165;
+body{
+	background-color: #000000;
+	background-image: url("../img/login.jpg");
 }
 .register {
     width: 400px;

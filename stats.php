@@ -7,15 +7,15 @@ if (!isset($_SESSION['loggedin'])) {
 $DATABASE_HOST = 'localhost';
 $DATABASE_USER = 'root';
 $DATABASE_PASS = '';
-$DATABASE_NAME = 'phpucp';
+$DATABASE_NAME = 'osrp';
 $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
 if (mysqli_connect_errno()) {
 	die ('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
-$stmt = $con->prepare('SELECT password, regdate, ingame_name FROM accounts WHERE id = ?');
-$stmt->bind_param('i', $_SESSION['id']);
+$stmt = $con->prepare('SELECT `level`, `exp`, `hours`, `cash`, `bank` FROM `users`');
+// $stmt->bind_param('i', $_SESSION['id']);
 $stmt->execute();
-$stmt->bind_result($password, $regdate, $ign);
+$stmt->bind_result($level, $experience, $hours, $cash, $bank);
 $stmt->fetch();
 $stmt->close();
 ?>
@@ -38,25 +38,29 @@ $stmt->close();
 			</div>
 		</nav>
 		<div class="content">
-			<h2>Profile Page</h2>
+			<h2>Player stats</h2>
 			<div>
-				<p>Your account details are below:</p>
 				<table>
 					<tr>
-						<td>Username:</td>
-						<td><?=$_SESSION['name']?></td>
-                    </tr>
-                    <tr>
-                        <td>Registration Date:</td>
-                        <td><?=$regdate?></td>
-                    </tr>
+						<td>Level:</td>
+						<td><?=$level?></td>
 					<tr>
-						<td>Ingame name:</td>
-						<td><?=$ign?></td>
-					</tr>
 					<tr>
-						<td>Password:</td>
-						<td>*********</td>
+						<td>Experience:</td>
+						<td><?=$experience?></td>
+					<tr>
+					<tr>
+						<td>Hours:</td>
+						<td><?=$hours?></td>
+					<tr>
+					<tr>
+						<td>Cash:</td>
+						<td>$<?=$cash?></td>
+					<tr>
+					<tr>
+						<td>Bank balance:</td>
+						<td>$<?=$bank?></td>
+					<tr>
 				</table>
 			</div>
 		</div>

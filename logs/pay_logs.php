@@ -19,7 +19,7 @@ if (!isset($_SESSION['loggedin'])) {
  // Formuleer hieronder de query
        // 1) Begin met het opstellen van een query die alle gebruikers ophaalt (testen in phpmyadmin, tabje SQL)
        // 2) Maak daarna de stap waarin je de query verfijnd met behulp van een LIKE (zie presentatie, daarna testen in phpmyadmin, tabje SQL)
- $sql = "SELECT * FROM `log_pay` WHERE 'description' LIKE '%$val%' ORDER BY 'date'";
+ $sql = "SELECT * FROM `log_pay` WHERE `description` LIKE '%$val%' ORDER BY 'date'";
  if ($result = $conn->query($sql)) {
    $str = ""; // Leeg gemaakt zodat de geanimeerde achtergrond werkt.
    while ($row = $result->fetch_assoc()) {
@@ -47,6 +47,7 @@ if (!isset($_SESSION['loggedin'])) {
             <h1>Narcotic Roleplay UCP</h1>
             <a href="../home.php"><i class="fas fa-home"></i>Home</a>
             <a href="../profile.php"><i class="fas fa-user-circle"></i>Profile</a>
+            <a href="../stats.php"><i class="fas fa-address-card"></i>Ingame Stats</a>
             <a href="../logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
         </div>
     </nav>
@@ -63,16 +64,8 @@ if (!isset($_SESSION['loggedin'])) {
         <h2>Pay Logs</h2>
         <form action="" method="post">
         <label value="hoi" for="characters">Search pay logs for:</label>
-        <input type="text" id="characters" name="characters" onfocus="onFormFocus(this)" oninput="onFormInput()" value="<?php echo $val; ?>" autofocus />
+        <input type="text" id="characters" name="characters" value="<?php echo $val; ?>" autofocus />
         </form>
-        <script>
-        function onFormFocus(element) {
-            element.selectionStart = element.selectionEnd = element.value.length;
-        }
-        function onFormInput() {
-            document.forms[0].submit();
-        }
-        </script>
         <div><?php echo $str; ?></div>
         </div>
 </body>
