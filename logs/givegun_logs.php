@@ -8,16 +8,9 @@ if (!isset($_SESSION['loggedin'])) {
  if( isset($_POST['characters']) ) {
    $val = $_POST['characters'];
  }
- $servername = "localhost";
- $dbname     = "osrp";
- $username   = "root";
- $password   = "";
- $conn = new mysqli($servername, $username, $password, $dbname);
- if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
- }
+ require "../config/gamedbconn.php";
  $sql = "SELECT * FROM `log_givegun` WHERE `description` LIKE '%$val%' ORDER BY 'date'";
- if ($result = $conn->query($sql)) {
+ if ($result = $con->query($sql)) {
    $str = "";
    while ($row = $result->fetch_assoc()) {
      $str .= "<div class='listitem' style='border:1px solid black; margin:3px; padding:2px;'>" . $row['date'] . " " . $row['description'] . "</div>";
@@ -25,7 +18,7 @@ if (!isset($_SESSION['loggedin'])) {
    $str .= "";
    $result->free();
  }
- $conn->close();
+ $con->close();
 ?>
 <!DOCTYPE html>
 <html>

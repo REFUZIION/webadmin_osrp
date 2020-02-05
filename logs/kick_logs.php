@@ -8,30 +8,17 @@ if (!isset($_SESSION['loggedin'])) {
  if( isset($_POST['characters']) ) {
    $val = $_POST['characters'];
  }
- $servername = "localhost";
- $dbname     = "cms";
- $username   = "root";
- $password   = "";
- $conn = new mysqli($servername, $username, $password, $dbname);
- if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
- }
- // Formuleer hieronder de query
-       // 1) Begin met het opstellen van een query die alle gebruikers ophaalt (testen in phpmyadmin, tabje SQL)
-       // 2) Maak daarna de stap waarin je de query verfijnd met behulp van een LIKE (zie presentatie, daarna testen in phpmyadmin, tabje SQL)
+ require "../config/gamedbconn.php";
  $sql = "SELECT * FROM `log_kick` WHERE `description` LIKE '%$val%' ORDER BY 'date'";  
- if ($result = $conn->query($sql)) {
-   $str = ""; // Leeg gemaakt zodat de geanimeerde achtergrond werkt.
+ if ($result = $con->query($sql)) {
+   $str = "";
    while ($row = $result->fetch_assoc()) {
-     // Pas hieronder de $row variabele aan, zodat de juiste waarden worden opgehaald (zie presentatie en demo)
-                       // De $row variabele is een associatieve array met waarden uit de database, die waarden kan je ophalen met behulp van kolomnamen
-                       // Als je niet weet hoe een associatieve array werkt in PHP, doe daar dan onderzoek naar!
      $str .= "<div class='listitem' style='border:1px solid black; margin:3px; padding:2px;'>" . $row['date'] . " " . $row['description'] . "</div>";
    }
-   $str .= ""; // Leeg gemaakt zodat de geanimeerde achtergrond werkt.
+   $str .= "";
    $result->free();
  }
- $conn->close();
+ $con->close();
 ?>
 <!DOCTYPE html>
 <html>

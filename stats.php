@@ -12,10 +12,10 @@ $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_
 if (mysqli_connect_errno()) {
 	die ('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
-$stmt = $con->prepare('SELECT `level`, `exp`, `hours`, `cash`, `bank` FROM `users`');
+$stmt = $con->prepare('SELECT `level`, `exp`, `hours`, `cash`, `bank`, `skin`, `weed`, `cocaine`, `meth`, `materials` FROM `users`');
 // $stmt->bind_param('i', $_SESSION['id']);
 $stmt->execute();
-$stmt->bind_result($level, $experience, $hours, $cash, $bank);
+$stmt->bind_result($level, $experience, $hours, $cash, $bank, $skin, $weed, $cocaine, $meth, $materials);
 $stmt->fetch();
 $stmt->close();
 ?>
@@ -25,6 +25,7 @@ $stmt->close();
 		<meta charset="utf-8">
 		<title>My Profile</title>
 		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<link href="css/stats.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 	</head>
 	<body class="loggedin">
@@ -38,8 +39,9 @@ $stmt->close();
 			</div>
 		</nav>
 		<div class="content">
-			<h2>Player stats</h2>
+			<h2>Player stats and Inventory</h2>
 			<div>
+				<img class="skin" src="img/skins/Skin_<?=$skin?>.png" width="110px" height="200px">
 				<table>
 					<tr>
 						<td>Level:</td>
@@ -55,11 +57,27 @@ $stmt->close();
 					<tr>
 					<tr>
 						<td>Cash:</td>
-						<td>$<?=$cash?></td>
+						<td>$<?=number_format("$cash")?></td>
 					<tr>
 					<tr>
 						<td>Bank balance:</td>
-						<td>$<?=$bank?></td>
+						<td>$<?=number_format("$bank")?></td>
+					<tr>
+					<tr>
+						<td>Cocaine:</td>
+						<td><?=number_format("$weed")?>g</td>
+					<tr>
+					<tr>
+						<td>Weed:</td>
+						<td><?=number_format("$cocaine")?>g</td>
+					<tr>
+					<tr>
+						<td>Meth:</td>
+						<td><?=number_format("$meth")?>g</td>
+					<tr>
+					<tr>
+						<td>Materials:</td>
+						<td><?=number_format("$materials")?></td>
 					<tr>
 				</table>
 			</div>
