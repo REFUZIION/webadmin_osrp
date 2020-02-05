@@ -1,37 +1,24 @@
 <?php
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: index.html');
-	exit();
+  header('Location: index.html');
+  exit();
 }
- $val = "";
- if( isset($_POST['characters']) ) {
-   $val = $_POST['characters'];
- }
- $servername = "localhost";
- $dbname     = "osrp";
- $username   = "root";
- $password   = "";
- $conn = new mysqli($servername, $username, $password, $dbname);
- if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
- }
- // Formuleer hieronder de query
-       // 1) Begin met het opstellen van een query die alle gebruikers ophaalt (testen in phpmyadmin, tabje SQL)
-       // 2) Maak daarna de stap waarin je de query verfijnd met behulp van een LIKE (zie presentatie, daarna testen in phpmyadmin, tabje SQL)
- $sql = "SELECT * FROM `log_admin` WHERE `description` LIKE '%$val%' ORDER BY 'date'";
- if ($result = $conn->query($sql)) {
-   $str = ""; // Leeg gemaakt zodat de geanimeerde achtergrond werkt.
-   while ($row = $result->fetch_assoc()) {
-     // Pas hieronder de $row variabele aan, zodat de juiste waarden worden opgehaald (zie presentatie en demo)
-                       // De $row variabele is een associatieve array met waarden uit de database, die waarden kan je ophalen met behulp van kolomnamen
-                       // Als je niet weet hoe een associatieve array werkt in PHP, doe daar dan onderzoek naar!
-     $str .= "<div class='listitem' style='border:1px solid black; margin:3px; padding:2px;'>" . $row['date'] . " " . $row['description'] . "</div>";
-   }
-   $str .= ""; // Leeg gemaakt zodat de geanimeerde achtergrond werkt.
-   $result->free();
- }
- $conn->close();
+$val = "";
+if( isset($_POST['characters']) ) {
+  $val = $_POST['characters'];
+}
+require "../config/gamedbconn.php";
+$sql = "SELECT * FROM `log_admin` WHERE `description` LIKE '%$val%' ORDER BY 'date'";
+if ($result = $con->query($sql)) {
+  $str = "";
+  while ($row = $result->fetch_assoc()) {
+    $str .= "<div class='listitem' style='border:1px solid black; margin:3px; padding:2px;'>" . $row['date'] . " " . $row['description'] . "</div>";
+  }
+  $str .= "";
+  $result->free();
+}
+$con->close();
 ?>
 <!DOCTYPE html>
 <html>
