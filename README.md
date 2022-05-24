@@ -1,6 +1,8 @@
 # phpucp
-Work in progress User Control Panel for administrators on San Andreas Multiplayer
-If you import the databases to your localhost the login is admin admin.
+Work in progress User Control Panel for administrators on San Andreas Multiplayer<br>
+If you import the databases to your localhost the login is <br>
+admin<br>
+admin
 
 
 # Changelog
