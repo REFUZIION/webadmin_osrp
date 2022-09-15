@@ -41,7 +41,7 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `username`, `password`, `regdate`, `ingame_name`) VALUES
-(1, 'admin', '$2y$10$sp37PYyc8FVtGOu2bDJUG.Vjsznh5Yh025Mw2Cr0/9DbwETvKP7WK', '2020-01-17 03:16:53', 'Angelo Musitano');
+(1, 'admin', '', '2020-01-17 03:16:53', 'Angelo Musitano');
 
 --
 -- Indexen voor geëxporteerde tabellen
