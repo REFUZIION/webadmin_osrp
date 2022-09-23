@@ -7,6 +7,11 @@ admin
 Works together with the osrp_SAMP gamemode script.
 https://github.com/REFUZIION/os-rpSAMP
 
+# Features:
+- Login
+- Register
+- See game logs
+
 # Changelog
 *Update 1.1*
   - Added Player stat system (Still work in progress)
