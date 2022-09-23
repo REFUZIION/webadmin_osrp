@@ -4,6 +4,8 @@ If you import the databases to your localhost the login is <br>
 admin<br>
 admin
 
+Works together with the osrp_SAMP gamemode script.
+https://github.com/REFUZIION/os-rpSAMP
 
 # Changelog
 *Update 1.1*
